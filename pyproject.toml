@@ -49,8 +49,8 @@ dependencies = [
 
 
 [project.urls]
-Repository = "https://github.com/Thiyaneshk/python-2026-mk1"
-Issues = "https://github.com/Thiyaneshk/python-2026-mk1/issues"
+Repository = "https://github.com/Thiyaneshk/Python_2026_mk1"
+Issues = "https://github.com/Thiyaneshk/Python_2026_mk1/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["app", "data", "assets"]

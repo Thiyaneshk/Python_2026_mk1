@@ -1,0 +1,30 @@
+{
+  "portfolio": [
+    {
+      "ticker": "AAPL",
+      "shares": 10,
+      "buy_price": 150.25,
+      "buy_date": "2024-01-15",
+      "notes": "Core tech holding"
+    },
+    {
+      "ticker": "MSFT",
+      "shares": 5,
+      "buy_price": 380.50,
+      "buy_date": "2024-03-20",
+      "notes": "Cloud & AI exposure"
+    }
+  ],
+  "watchlist": [
+    {
+      "ticker": "NVDA",
+      "added_date": "2025-01-10",
+      "reason": "GPU leader, reviewing for AI position"
+    },
+    {
+      "ticker": "TSLA",
+      "added_date": "2025-01-15",
+      "reason": "EV sector, awaiting better entry point"
+    }
+  ]
+}

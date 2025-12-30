@@ -1,0 +1,171 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{fontawesome5}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+% Custom font
+\usepackage[default]{lato}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+% Commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.3in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+% Heading
+\begin{center}
+    \textbf{\Huge \scshape Thiyanesh Kamaraj} \\ \vspace{1pt}
+    \small 
+    \faPhone\ \ (782) 882-4409 \quad
+    \faEnvelope\ \ \href{mailto:ThiyaneshK@gmail.com}{ThiyaneshK@gmail.com} \quad
+    \faLinkedin\ \ \href{https://linkedin.com/in/thiyaneshk}{linkedin.com/in/thiyaneshk} \quad
+%    \faGithub\ \ \href{https://github.com/Thiyaneshk}{github.com/Thiyaneshk} \\
+    \faMapMarker\ \ Halifax, Canada
+\end{center}
+
+% Professional Summary
+\section{Professional Summary}
+\resumeSubHeadingListStart
+    \resumeItem{
+        Results-driven Senior PL/SQL Developer and Database Architect with 14 years of experience designing and optimizing enterprise database systems. Proven expertise in Oracle performance tuning, complex SQL/PLSQL development, and spearheading large-scale modernization projects that transform legacy environments into scalable, high-performance data platforms. Demonstrated proficiency in modern data stack technologies through dedicated learning initiatives. Recognized for translating operational challenges into measurable performance and cost improvements.
+    }
+\vspace{1em}
+\resumeSubHeadingListEnd 
+
+
+% Technical Skills
+\section{Technical Skills}
+\resumeSubHeadingListStart
+  \resumeItem{Languages: PL/SQL, SQL, Shell Scripting, Python, COBOL}
+  \resumeItem{Databases: Oracle 19c/12c, DB2 LUW, MSSQL, Sybase, PostgreSQL}
+  \resumeItem{Concepts: Performance Tuning, CI/CD, ETL, Data Migration}
+  \resumeItem{BI Tools: PowerBI, Apache Superset, Streamlit, SSRS, Crystal}
+  \resumeItem{Applications: TCS B@NCS, Oracle Flexcube, TruckMate, TMW, Omnitracs}
+  \resumeItem{Tools: Git, Docker, Jenkins, Bitbucket}
+  \resumeItem{Data Engineering: dbt, Apache Airflow, n8n}
+  \vspace{1em}
+\resumeSubHeadingListEnd
+
+% Experience
+\section{Experience}
+\resumeSubHeadingListStart
+\vspace{1em}
+
+  \resumeSubheading
+    {Seaboard Transport}{Halifax, Canada}
+    {Senior Database Developer}{Jan 2023 -- Present}
+    \item[]\small{\textit{Spearheaded the database architecture modernization for Trimble TruckMate TMS, optimizing fleet management and telematics systems to replace legacy processes with scalable, high-performance data solutions.}}
+    \resumeItemListStart
+        \resumeItem{Architected System-Wide Performance Transformation: Modernized TruckMate tracking systems by converting recursive SQL into optimized stored procedures, reducing runtimes from \textbf{10 min to 3 sec} and \textbf{30-45 min to 1 min} using advanced PL/SQL techniques, doubling application throughput and eliminating user wait times.}
+        \resumeItem{Enabled business growth and cost control using BI reporting of KPIs including \textbf{Ops Call Metrics}, \textbf{Driver Scorecards}, \textbf{On-Time Delivery}, and \textbf{Trailer Utilization}, \textbf{Waiting Time/Demurrage charges tracking}, \textbf{operation's dashboards}.}
+        \resumeItem{Established modern development workflows using Git version control and expanded access policies for improved productivity and governance across TruckMate and TMW applications.}
+        \resumeItem{Containerized applications using Docker and automated workflows with n8n, replacing legacy SSIS packages and improving deployment reliability.}
+        \resumeItem{Collaborated cross-functionally with operations and IT leadership to align database modernization efforts with strategic business goals and enhance decision-making.}
+    \resumeItemListEnd
+  \vspace{1em}
+  
+  \resumeSubheading
+    {Virtusa Polaris}{Chennai, India}
+    {Senior Consultant (Oracle PL/SQL SME \& Migration Lead)}{Oct 2018 -- Jul 2022}
+    \item[]\small{\textit{Spearheaded the enterprise-scale migration of Citi Bank Japan's critical financial applications from legacy Sybase to modern Oracle infrastructure, serving corporate banking, GL reporting, and compliance data needs across complex upstream/downstream systems.}}
+    \resumeItemListStart
+        \resumeItem{Led migration of a large scale Sybase database to Oracle 12c using advanced PL/SQL, Shell scripting and Data Pump, transforming batch processes into modular packages and reducing EOD runtime from over 10 hours to 3 hours.}
+        \resumeItem{Upgraded core system from Oracle 12c to 19c seamlessly using AWR analysis and performance tuning techniques, handling complex dependencies with zero issues.}
+        \resumeItem{Pioneered CI/CD pipelines with Bitbucket and Jenkins for database deployment, establishing coding standards and mentoring team in Oracle optimization techniques including BULK COLLECT and RESULT\_CACHE.}
+        \resumeItem{Developed reusable PL/SQL utility packages and automated reporting solutions using Python and Shell scripts, standardizing development and reducing project timelines.}
+    \resumeItemListEnd
+  \vspace{1em}
+
+  \resumeSubheading
+    {Oracle Financial Services Software}{Chennai, India}
+    {Application Developer (Core Banking)}{Aug 2016 -- Oct 2018}
+    \item[]\small{\textit{Implemented, customized, and maintained the Flexcube core banking application for a diverse portfolio of clients across the APAC region and the Middle East, specializing in both conventional and Islamic banking modules.}}
+    \resumeItemListStart
+        \resumeItem{Optimized Flexcube banking application using Oracle AWR reports, advanced PL/SQL features (BULK COLLECT, FORALL, RESULT\_CACHE), and SQL Plan Management, reducing EOD processing time by 20-30\% across APAC and Middle Eastern clients.}
+        \resumeItem{Developed specialized banking solutions including Islamic Banking modules for Middle Eastern clients using Oracle Flexcube, ensuring regulatory compliance and functional requirements.}
+        \resumeItem{Implemented proactive bug tracking and resolution framework across client deployments, improving system stability and client satisfaction through rigorous PL/SQL development standards.}
+    \resumeItemListEnd
+  \vspace{1em}
+
+  \resumeSubheading
+    {HCL Technologies Ltd.}{Chennai, India}
+    {Software Engineer (Oracle \& Unix)}{Dec 2014 -- Aug 2016}
+    \item[]\small{\textit{Contributed to the development and maintenance of the high-volume Staples US rewards system, a critical customer-facing loyalty program managing 6TB+ of application and EDW data with Teradata integration.}}
+    \resumeItemListStart
+        \resumeItem{Reduced batch job runtimes by 37.5\% using Explain Plan, TKPROF, and strategic indexing techniques on Oracle database for Staples rewards system.}
+        \resumeItem{Automated manual reporting using Shell and Perl scripts, cutting operational effort by 30\% and improving monitoring capabilities.}
+        \resumeItem{Developed reward system features using PL/SQL that generated \$105,000 in new business, receiving formal acclaim from client stakeholders.}
+    \resumeItemListEnd
+  \vspace{1em}
+
+  \resumeSubheading
+    {C-Edge Tech (TCS - SBI JV)}{Chennai, India}
+    {Core Banking Systems Analyst / Developer}{Oct 2012 -- Dec 2014}
+    \item[]\small{\textit{Played a key role in the core banking team, implementing and customizing the TCS B@NCS application to migrate legacy systems for over 25 banks to a unified Core Banking System (CBS) with focus on Deposits, GL, and Reporting modules.}}
+    \resumeItemListStart
+        \resumeItem{Led data migration for over 27 banks using Shell scripting and ETL processes, designing robust data validation with PL/SQL packages for TCS B@NCS core banking system.}
+        \resumeItem{Automated report delivery and EOD processes using Shell scripts and PL/SQL, reducing staffing from 5 to 2 and saving 120 person-hours weekly.}
+        \resumeItem{Developed and optimized PL/SQL packages for core banking modules (Deposits, GL, Reporting) using COBOL integration, ensuring reliable data validation and system reliability.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% Education
+\section{Education}
+\resumeSubHeadingListStart
+    \resumeSubheading
+      {Pallavan College of Engineering}{Chennai, India}
+      {B.Tech, Information Technology}{ 2008 -- 2012}
+\resumeSubHeadingListEnd 
+
+\end{document}

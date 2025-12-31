@@ -21,7 +21,7 @@ else:
                 page = "_".join(parts[2:])
                 groups[group].append((int(order), page, file))
 
-    allowed_groups = ['Home', 'Learning', 'Resume', 'Stock', 'Portfolio']
+    allowed_groups = ['Home', 'Learning', 'Resume', 'Stock', 'Portfolio','OldApp']
     filtered_groups = {group: groups[group] for group in allowed_groups if group in groups}
     
     for group in filtered_groups:

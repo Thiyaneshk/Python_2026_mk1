@@ -4,6 +4,8 @@ import yfinance as yf
 import pandas as pd
 import cufflinks as cf
 import datetime
+import io
+import contextlib
 
 # App title
 st.markdown('''
@@ -30,7 +32,13 @@ index_option = st.sidebar.selectbox( 'Choose Index', utils.index_list())
 
 tickerSymbol = st.sidebar.selectbox('Stock ticker', utils.get_stock_list(index_option)) # Select ticker symbol
 tickerData = yf.Ticker(tickerSymbol) # Get ticker data
-tickerDf = tickerData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
+# Silence yfinance console messages
+with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+    tickerDf = tickerData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
+
+if tickerDf is None or tickerDf.empty:
+    st.warning(f"No historical price data found for {tickerSymbol}; symbol may be delisted or unavailable.")
+    st.stop()
 
 # Ticker information
 string_logo = '<img src=%s>' % tickerData.info['logo_url']

@@ -45,7 +45,7 @@ try:
         fig_status = px.pie(status_counts, names='STATUS', values='COUNT', title="Trailer Distribution by Status")
         fig_status.update_traces(textinfo='percent+label')
         fig_status.update_layout(showlegend=True)
-        st.plotly_chart(fig_status, use_container_width=True)
+        st.plotly_chart(fig_status, width='stretch')
 
         # Pie chart of trailer counts by CLASS
         class_counts = df['CLASS'].value_counts().reset_index()
@@ -53,7 +53,7 @@ try:
         fig_class = px.pie(class_counts, names='CLASS', values='COUNT', title="Trailer Distribution by Class")
         fig_class.update_traces(textposition='inside', textinfo='percent+label')
         fig_class.update_layout(showlegend=True)
-        st.plotly_chart(fig_class, use_container_width=True)
+        st.plotly_chart(fig_class, width='stretch')
 
 
     with col2:

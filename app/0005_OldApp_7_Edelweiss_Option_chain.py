@@ -126,7 +126,7 @@ print("Start edelweiss Option chain data :")
 # c = alt.Chart(alt_df).mark_circle().encode(
 #      x='strike', y='ceOI', size='ceOIchg', color='c', tooltip=['strike', 'ceOI', 'ceOIchg'])
 #
-# st.altair_chart(c, use_container_width=True)
+# st.altair_chart(c, width='stretch')
 
 # st.write('Line chart')
 # st.line_chart(df_4,  x='ceOI',y='strike')

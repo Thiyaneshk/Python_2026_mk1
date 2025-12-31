@@ -1,0 +1,171 @@
+{
+  "portfolio": [
+    {
+      "ticker": "GHCLTEXTIL",
+      "shares": 250,
+      "buy_price": 109.86,
+      "buy_date": "2025-12-31",
+      "notes": "Ghcl Limited - Textiles"
+    },
+    {
+      "ticker": "GOLDBEES",
+      "shares": 40,
+      "buy_price": 105.2087,
+      "buy_date": "2025-12-31",
+      "notes": "Gold ETF"
+    },
+    {
+      "ticker": "HAPPSTMNDS",
+      "shares": 1800,
+      "buy_price": 762.8663,
+      "buy_date": "2025-12-31",
+      "notes": "Happy Minds Technologies"
+    },
+    {
+      "ticker": "HDFCBANK",
+      "shares": 2200,
+      "buy_price": 753.4974,
+      "buy_date": "2025-12-31",
+      "notes": "HDFC Bank - Blue Chip"
+    },
+    {
+      "ticker": "HINDUNILV",
+      "shares": 2,
+      "buy_price": 2466.6,
+      "buy_date": "2025-12-31",
+      "notes": "Hindustan Unilever - Premium"
+    },
+    {
+      "ticker": "ITC",
+      "shares": 1600,
+      "buy_price": 401.8062,
+      "buy_date": "2025-12-31",
+      "notes": "ITC Limited - Dividend stock"
+    },
+    {
+      "ticker": "JUNIORBEES",
+      "shares": 4,
+      "buy_price": 740.045,
+      "buy_date": "2025-12-31",
+      "notes": "Nifty Junior ETF"
+    },
+    {
+      "ticker": "LICI",
+      "shares": 251,
+      "buy_price": 707.8026,
+      "buy_date": "2025-12-31",
+      "notes": "Life Insurance Corporation"
+    },
+    {
+      "ticker": "LIQUIDBEES",
+      "shares": 510.592,
+      "buy_price": 991.0119,
+      "buy_date": "2025-12-31",
+      "notes": "Liquid Funds ETF"
+    },
+    {
+      "ticker": "LUPIN",
+      "shares": 800,
+      "buy_price": 1190.2117,
+      "buy_date": "2025-12-31",
+      "notes": "Lupin Pharmaceuticals"
+    },
+    {
+      "ticker": "NIFTYBEES",
+      "shares": 46,
+      "buy_price": 295.41,
+      "buy_date": "2025-12-31",
+      "notes": "Nifty ETF - Index tracking"
+    },
+    {
+      "ticker": "PGINVIT",
+      "shares": 8000,
+      "buy_price": 94.4984,
+      "buy_date": "2025-12-31",
+      "notes": "PG Investments - Real Estate"
+    },
+    {
+      "ticker": "RELIANCE",
+      "shares": 233,
+      "buy_price": 1288.1202,
+      "buy_date": "2025-12-31",
+      "notes": "Reliance Industries - Mega Cap"
+    },
+    {
+      "ticker": "SGBDEC29",
+      "shares": 21,
+      "buy_price": 4715.0476,
+      "buy_date": "2025-12-31",
+      "notes": "Sovereign Gold Bond Dec 2029"
+    },
+    {
+      "ticker": "SGBJAN29",
+      "shares": 4,
+      "buy_price": 4950,
+      "buy_date": "2025-12-31",
+      "notes": "Sovereign Gold Bond Jan 2029"
+    },
+    {
+      "ticker": "SGBMAY29",
+      "shares": 70,
+      "buy_price": 4701.8686,
+      "buy_date": "2025-12-31",
+      "notes": "Sovereign Gold Bond May 2029"
+    },
+    {
+      "ticker": "SGBOCT27",
+      "shares": 40,
+      "buy_price": 4089.25,
+      "buy_date": "2025-12-31",
+      "notes": "Sovereign Gold Bond Oct 2027"
+    },
+    {
+      "ticker": "SGBSEP31",
+      "shares": 34,
+      "buy_price": 5873,
+      "buy_date": "2025-12-31",
+      "notes": "Sovereign Gold Bond Sep 2031"
+    },
+    {
+      "ticker": "SILVERBEES",
+      "shares": 12,
+      "buy_price": 173.975,
+      "buy_date": "2025-12-31",
+      "notes": "Silver ETF"
+    },
+    {
+      "ticker": "TATVA",
+      "shares": 13,
+      "buy_price": 1083,
+      "buy_date": "2025-12-31",
+      "notes": "Tatva Chintan - Specialty Chemicals"
+    }
+  ],
+  "watchlist": [
+    {
+      "ticker": "SBIN",
+      "added_date": "2025-12-31",
+      "reason": "State Bank of India - Strong dividend history"
+    },
+    {
+      "ticker": "INFY",
+      "added_date": "2025-12-31",
+      "reason": "Infosys - IT sector exposure"
+    },
+    {
+      "ticker": "TCS",
+      "added_date": "2025-12-31",
+      "reason": "Tata Consultancy Services - Market leader"
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "added_date": "2025-12-31",
+      "reason": "Asian Paints - Quality name"
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "added_date": "2025-12-31",
+      "reason": "Bharti Airtel - Telecom growth"
+    }
+  ]
+}

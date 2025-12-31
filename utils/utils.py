@@ -49,7 +49,7 @@ def get_stock_list(index_option):
     urls = {
         "NIFTY 50": [
             "https://archives.nseindia.com/content/indices/ind_nifty50list.csv",
-            "https://www.nseindia.com/api/equity-master?index=equities%20market&csv=true",
+            # "https://www.nseindia.com/api/equity-master?index=equities%20market&csv=true",
         ],
         "NIFTY BANK": [
             "https://archives.nseindia.com/content/indices/ind_niftybanklist.csv"

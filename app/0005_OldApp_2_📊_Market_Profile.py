@@ -8,7 +8,7 @@ import numpy as np
 st.set_page_config(
     page_title="Market Profile Chart",
     page_icon="💹",
-    layout="wide")
+    layout="wide") 
 
 index_option = st.sidebar.selectbox( 'Choose a Index :', utils.index_list())
 ticker = st.sidebar.selectbox( 'Choose a Stock',utils.get_stock_list(index_option))

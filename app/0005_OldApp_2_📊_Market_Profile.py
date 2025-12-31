@@ -1,4 +1,4 @@
-from Utils import utils
+from utils import utils
 from plotly.subplots import make_subplots
 import yfinance as yf
 import streamlit as st

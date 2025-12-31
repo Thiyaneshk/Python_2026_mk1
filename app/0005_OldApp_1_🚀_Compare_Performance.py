@@ -1,4 +1,4 @@
-from Utils import utils
+from utils import utils
 import streamlit as st
 import yfinance as yf
 st.set_page_config(

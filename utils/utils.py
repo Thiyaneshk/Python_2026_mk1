@@ -19,7 +19,7 @@ def get_exp_date():
     input_dte = st.date_input("Enter Expiry date :", expiry_dt)
     return str.upper(input_dte.strftime('%d%b%Y'))
 
-@st.cache
+@st.cache_data
 def Expiry_dates():
     list_exp_dates = list()
     expiry_day = "Thursday"
@@ -36,7 +36,7 @@ def Expiry_dates():
     print("Printing list :", list_exp_dates)
     return list_exp_dates
 
-@st.cache
+@st.cache_data
 def index_list():
     return ['NIFTY 50', 'Bank-Nifty', 'Nifty-500','Nifty-IT','NASDAQ']
 
@@ -84,6 +84,10 @@ def get_stock_list(index_option):
                 st.warning(f"No symbol column found in CSV from {url}")
                 continue
 
+            # For Indian indices (non-NASDAQ), append .NS if missing
+            if 'NASDAQ' not in str(index_option).upper():
+                symbols = [s + '.NS' if (not s.startswith('^') and not s.endswith('.NS')) else s for s in symbols]
+
             st.success(f"✅ Loaded {len(symbols)} stocks from {index_option}")
             return symbols
 
@@ -94,7 +98,7 @@ def get_stock_list(index_option):
     st.error(f"❌ All URLs failed for {index_option}")
     return []
 
-@st.cache
+@st.cache_data
 def get_nifty50_list():
     url = 'https://www1.nseindia.com/content/indices/ind_nifty50list.csv'
     # url = 'https://www1.nseindia.com/content/indices/ind_nifty500list.csv'
@@ -107,7 +111,7 @@ def get_nifty50_list():
     Scripts_dropdown = script_df.Symbol.unique().tolist()
     return Scripts_dropdown
 
-@st.cache
+@st.cache_data
 def get_nifty500_list():
     # url = 'https://www1.nseindia.com/content/indices/ind_nifty50list.csv'
     url = 'https://www1.nseindia.com/content/indices/ind_nifty500list.csv'
@@ -120,6 +124,7 @@ def get_nifty500_list():
     return Scripts_dropdown
 
 
+@st.cache_resource
 def _requests_session_with_retries(retries=3, backoff_factor=0.3, status_forcelist=(500,502,503,504)):
     session = requests.Session()
     retry = Retry(
@@ -197,10 +202,10 @@ def relative_return(df):
     cumret=cumret.fillna(0)
     return cumret
 
-@st.cache
+@st.cache_data
 def cur_year():
     return date.today().year
 
-@st.cache
+@st.cache_data
 def cur_year_YYYY_MON_DD():
     return str(date.today().year) + '-12-31'

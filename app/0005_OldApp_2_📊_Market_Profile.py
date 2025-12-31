@@ -4,14 +4,43 @@ import yfinance as yf
 import streamlit as st
 import plotly.graph_objects as go
 import numpy as np
+import pandas as pd
+import io
+import contextlib
+import urllib.parse
 
 st.set_page_config(
     page_title="Market Profile Chart",
     page_icon="💹",
     layout="wide") 
 
-index_option = st.sidebar.selectbox( 'Choose a Index :', utils.index_list())
-ticker = st.sidebar.selectbox( 'Choose a Stock',utils.get_stock_list(index_option))
+# Support preselecting via ?ticker=RELIANCE
+params = st.experimental_get_query_params()
+passed_ticker = None
+if 'ticker' in params:
+    passed_ticker = urllib.parse.unquote(params.get('ticker')[0])
+
+indices = utils.index_list()
+best_idx = 0
+if passed_ticker:
+    for i, idx in enumerate(indices):
+        symbols = utils.get_stock_list(idx)
+        if any(sym == passed_ticker or sym.endswith(passed_ticker) or sym.replace('.NS', '') == passed_ticker for sym in symbols):
+            best_idx = i
+            break
+
+index_option = st.sidebar.selectbox( 'Choose a Index :', indices, index=best_idx)
+options = utils.get_stock_list(index_option)
+
+# default ticker
+default_ticker = None
+if passed_ticker:
+    for sym in options:
+        if sym == passed_ticker or sym.endswith(passed_ticker) or sym.replace('.NS', '') == passed_ticker:
+            default_ticker = sym
+            break
+
+ticker = st.sidebar.selectbox( 'Choose a Stock', options, index=options.index(default_ticker) if default_ticker in options else 0)
 
 i = st.sidebar.selectbox(
     "Interval in minutes",
@@ -21,7 +50,14 @@ i = st.sidebar.selectbox(
 p = st.sidebar.number_input("How many days (1-30)", min_value=1, max_value=30, step=1)
 
 stock = yf.Ticker(ticker)
-history_data = stock.history(interval=i, period=str(p) + "d")
+# Silence yfinance console messages for missing/delisted symbols
+with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+    history_data = stock.history(interval=i, period=str(p) + "d")
+
+# Handle missing or empty history data (e.g., delisted or unavailable symbols)
+if history_data is None or history_data.empty or history_data['Close'].isna().all():
+    st.warning(f"No price data found for {ticker}; symbol may be delisted or unavailable.")
+    st.stop()
 
 prices = history_data['Close']
 volumes = history_data['Volume']
@@ -32,66 +68,68 @@ upper = prices.max()
 prices_ax = np.linspace(lower, upper, num=20)
 vol_ax = np.zeros(20)
 
-for i in range(0, len(volumes)):
-    if (prices[i] >= prices_ax[0] and prices[i] < prices_ax[1]):
-        vol_ax[0] += volumes[i]
+for idx in range(0, len(volumes)):
+    p = prices.iloc[idx]
+    v = volumes.iloc[idx]
+    if (p >= prices_ax[0] and p < prices_ax[1]):
+        vol_ax[0] += v
 
-    elif (prices[i] >= prices_ax[1] and prices[i] < prices_ax[2]):
-        vol_ax[1] += volumes[i]
+    elif (p >= prices_ax[1] and p < prices_ax[2]):
+        vol_ax[1] += v
 
-    elif (prices[i] >= prices_ax[2] and prices[i] < prices_ax[3]):
-        vol_ax[2] += volumes[i]
+    elif (p >= prices_ax[2] and p < prices_ax[3]):
+        vol_ax[2] += v
 
-    elif (prices[i] >= prices_ax[3] and prices[i] < prices_ax[4]):
-        vol_ax[3] += volumes[i]
+    elif (p >= prices_ax[3] and p < prices_ax[4]):
+        vol_ax[3] += v
 
-    elif (prices[i] >= prices_ax[4] and prices[i] < prices_ax[5]):
-        vol_ax[4] += volumes[i]
+    elif (p >= prices_ax[4] and p < prices_ax[5]):
+        vol_ax[4] += v
 
-    elif (prices[i] >= prices_ax[5] and prices[i] < prices_ax[6]):
-        vol_ax[5] += volumes[i]
+    elif (p >= prices_ax[5] and p < prices_ax[6]):
+        vol_ax[5] += v
 
-    elif (prices[i] >= prices_ax[6] and prices[i] < prices_ax[7]):
-        vol_ax[6] += volumes[i]
+    elif (p >= prices_ax[6] and p < prices_ax[7]):
+        vol_ax[6] += v
 
-    elif (prices[i] >= prices_ax[7] and prices[i] < prices_ax[8]):
-        vol_ax[7] += volumes[i]
+    elif (p >= prices_ax[7] and p < prices_ax[8]):
+        vol_ax[7] += v
 
-    elif (prices[i] >= prices_ax[8] and prices[i] < prices_ax[9]):
-        vol_ax[8] += volumes[i]
+    elif (p >= prices_ax[8] and p < prices_ax[9]):
+        vol_ax[8] += v
 
-    elif (prices[i] >= prices_ax[9] and prices[i] < prices_ax[10]):
-        vol_ax[9] += volumes[i]
+    elif (p >= prices_ax[9] and p < prices_ax[10]):
+        vol_ax[9] += v
 
-    elif (prices[i] >= prices_ax[10] and prices[i] < prices_ax[11]):
-        vol_ax[10] += volumes[i]
+    elif (p >= prices_ax[10] and p < prices_ax[11]):
+        vol_ax[10] += v
 
-    elif (prices[i] >= prices_ax[11] and prices[i] < prices_ax[12]):
-        vol_ax[11] += volumes[i]
+    elif (p >= prices_ax[11] and p < prices_ax[12]):
+        vol_ax[11] += v
 
-    elif (prices[i] >= prices_ax[12] and prices[i] < prices_ax[13]):
-        vol_ax[12] += volumes[i]
+    elif (p >= prices_ax[12] and p < prices_ax[13]):
+        vol_ax[12] += v
 
-    elif (prices[i] >= prices_ax[13] and prices[i] < prices_ax[14]):
-        vol_ax[13] += volumes[i]
+    elif (p >= prices_ax[13] and p < prices_ax[14]):
+        vol_ax[13] += v
 
-    elif (prices[i] >= prices_ax[14] and prices[i] < prices_ax[15]):
-        vol_ax[14] += volumes[i]
+    elif (p >= prices_ax[14] and p < prices_ax[15]):
+        vol_ax[14] += v
 
-    elif (prices[i] >= prices_ax[15] and prices[i] < prices_ax[16]):
-        vol_ax[15] += volumes[i]
+    elif (p >= prices_ax[15] and p < prices_ax[16]):
+        vol_ax[15] += v
 
-    elif (prices[i] >= prices_ax[16] and prices[i] < prices_ax[17]):
-        vol_ax[16] += volumes[i]
+    elif (p >= prices_ax[16] and p < prices_ax[17]):
+        vol_ax[16] += v
 
-    elif (prices[i] >= prices_ax[17] and prices[i] < prices_ax[18]):
-        vol_ax[17] += volumes[i]
+    elif (p >= prices_ax[17] and p < prices_ax[18]):
+        vol_ax[17] += v
 
-    elif (prices[i] >= prices_ax[18] and prices[i] < prices_ax[19]):
-        vol_ax[18] += volumes[i]
+    elif (p >= prices_ax[18] and p < prices_ax[19]):
+        vol_ax[18] += v
 
     else:
-        vol_ax[19] += volumes[i]
+        vol_ax[19] += v
 
 fig = make_subplots(
     rows=1, cols=2,
@@ -111,7 +149,7 @@ fig.add_trace(
     row=1, col=1
 )
 
-dateStr = history_data.index.strftime("%d-%m-%Y %H:%M:%S")
+dateStr = pd.to_datetime(history_data.index).strftime("%d-%m-%Y %H:%M:%S")
 
 fig.add_trace(
     go.Candlestick(x=dateStr,
@@ -150,4 +188,4 @@ config = {
     'modeBarButtonsToAdd': ['drawline']
 }
 
-st.plotly_chart(fig, use_container_width=True, config=config)
+st.plotly_chart(fig, width='stretch', config=config)

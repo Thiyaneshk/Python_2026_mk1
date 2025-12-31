@@ -608,7 +608,7 @@ if view_mode == "Progress Summary":
     st.metric("Overall Completion", f"{overall}%")
 
     df = pd.DataFrame(summary)
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df, width='stretch')
 
     st.bar_chart(df.set_index("Topic")["Completion %"])
 

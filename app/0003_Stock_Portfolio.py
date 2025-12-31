@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 import pydeck as pdk
 
 import yfinance as yf
+import io
+import contextlib
 import financedatabase as fd
 from streamlit_extras.colored_header import ST_COLOR_PALETTE
 
@@ -83,7 +85,7 @@ with st.expander('Portfolio'):
                                         'Frequency': st.column_config.SelectboxColumn(options=['Daily', 'Weekly', 'Biweekly', 'Monthly', 'Quarterly', 'Yearly'], required=True),
                                         'Start Date': st.column_config.DateColumn(width='small',required=True),
                                         'End Date': st.column_config.DateColumn(width='small', required=True)},
-                        use_container_width=True)
+                        width='stretch')
 
 
 if not pf.empty:
@@ -91,7 +93,13 @@ if not pf.empty:
     dfseries = []
     for asset in pf.Asset.str.split(' - ', expand=True)[0].unique():
         for label in pf[pf.Asset.str.split(' - ', expand=True)[0] == asset].Label.unique():
-            df = yf.Ticker(asset).history(period='11y', interval='1d')
+            # Silence yfinance messages for missing assets
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                df = yf.Ticker(asset).history(period='11y', interval='1d')
+            
+            if df is None or df.empty:
+                st.warning(f"No data for {asset}; skipping this asset.")
+                continue
             df['Symbol'] = asset
             df['Label'] = label
             dfseries.append(df)

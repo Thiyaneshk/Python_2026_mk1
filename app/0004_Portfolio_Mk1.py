@@ -6,6 +6,8 @@ import yfinance as yf
 from datetime import datetime, timedelta
 import plotly.graph_objects as go
 import plotly.express as px
+import io
+import contextlib
 
 st.set_page_config(page_title="Portfolio Tracker", layout="wide")
 st.title("📈 Portfolio Tracker")
@@ -25,7 +27,8 @@ def save_portfolio(data):
 
 def fetch_stock_data(ticker, period="3mo"):
     try:
-        data = yf.download(ticker, period=period, progress=False)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            data = yf.download(ticker, period=period, progress=False)
         return data
     except Exception as e:
         st.error(f"Error fetching data for {ticker}: {e}")
@@ -92,7 +95,7 @@ with col1:
     st.subheader("Current Holdings")
 
 with col2:
-    if st.button("➕ Add Ticker", use_container_width=True):
+    if st.button("➕ Add Ticker", width='stretch'):
         st.session_state.show_add_form = True
 
 portfolio = load_portfolio()
@@ -114,11 +117,11 @@ if holdings:
         df_display["Gain/Loss $"] = df_display["Gain/Loss $"].round(2)
         df_display["Current Value"] = df_display["Current Value"].round(2)
         
-        st.dataframe(df_display, use_container_width=True)
+        st.dataframe(df_display, width='stretch')
         
         fig = plot_portfolio_performance(portfolio_data)
         if fig:
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 else:
     st.info("No holdings yet. Add your first ticker to get started!")
 

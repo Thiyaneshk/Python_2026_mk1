@@ -65,7 +65,7 @@ fig.add_trace(go.Candlestick(x=hist.index, open=hist['Open'], high=hist['High'],
                             low=hist['Low'], close=hist['Close'], name="Price"), row=1, col=1)
 fig.add_trace(go.Bar(x=hist.index, y=hist['Volume'], name="Volume"), row=2, col=1)
 fig.update_layout(height=600, xaxis_rangeslider_visible=False)
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width='stretch')
 
 # Latest Updates & Price Movements
 st.subheader("📰 Latest Updates & Price Movements")
@@ -82,7 +82,7 @@ with col1:
             'Close': f"₹{recent['Close'].iloc[i]:.2f}",
             'Change': f"₹{day_change:.2f}"
         })
-    st.dataframe(pd.DataFrame(movements), use_container_width=True)
+    st.dataframe(pd.DataFrame(movements), width='stretch')
 
 with col2:
     st.markdown("**Recent Dividends:**")
@@ -91,7 +91,7 @@ with col2:
             'Date': dividends.index.strftime('%Y-%m-%d'),
             'Amount': [f"₹{x:.2f}" for x in dividends.values]
         })
-        st.dataframe(div_df, use_container_width=True)
+        st.dataframe(div_df, width='stretch')
     else:
         st.info("No recent dividends data available.")
 
@@ -109,7 +109,7 @@ tab1, tab2 = st.tabs(["Income Statement", "Company Overview"])
 
 with tab1:
     if not financials.empty:
-        st.dataframe(financials.T.head(), use_container_width=True)
+        st.dataframe(financials.T.head(), width='stretch')
     else:
         st.warning("Financial data not available.")
 
